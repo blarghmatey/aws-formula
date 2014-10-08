@@ -1,0 +1,22 @@
+{% set aws = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': [
+            'python-pip'
+        ],
+        'pip_pkgs': [
+            'boto'
+        ]
+    },
+    'RedHat': {
+        'pkgs': [
+            'python-pip'
+        ],
+        'pip_pkgs': [
+            'boto'
+        ]
+    },
+    'Arch': {
+        'pkgs': [
+        ]
+    }
+}, merge=salt['pillar.get']('aws:lookup')) %}
