@@ -40,7 +40,7 @@ create_autoscale_{{ group_name }}:
         {% for lb in load_balancers %}
         - {{ lb }}
         {% endfor %}
-    {% endfor %}
+    {% endif %}
     {% if default_cooldown %}
     - default_cooldown: {{ default_cooldown }}
     {% endif %}

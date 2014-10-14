@@ -44,7 +44,7 @@ provision_elb:
         {% for cname in cnames %}
         - {{ cname }}
         {% endfor %}
-    {% endfor %}
+    {% endif %}
     {% if attributes %}
     - attributes:
       {{ attributes }}
