@@ -34,7 +34,7 @@ create_autoscale_{{ group_name }}:
     - max_size: {{ max_size }}
     {% if launch_config %}
     - launch_config: {{ launch_config }}
-    {% endfor %}
+    {% endif %}
     {% if load_balancers %}
     - load_balancers:
         {% for lb in load_balancers %}
