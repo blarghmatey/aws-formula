@@ -24,8 +24,7 @@ provision_elb:
         {% endfor %}
     {% endif %}
     {% if health_check %}
-    - health_check:
-        {{ health_check }}
+    - health_check: {{ health_check }}
     {% endif %}
     {% if security_groups %}
     - security_groups:
@@ -46,6 +45,5 @@ provision_elb:
         {% endfor %}
     {% endif %}
     {% if attributes %}
-    - attributes:
-      {{ attributes }}
+    - attributes: {{ attributes }}
     {% endif %}
