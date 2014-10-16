@@ -4,12 +4,12 @@
 {% set aws_key = salt['pillar.get']('aws:key', None) %}
 {% set aws_region = salt['pillar.get']('aws:region', 'us-east-1') %}
 {% set aws_secret_key = salt['pillar.get']('aws:secret_key', None) %}
-{% set cnames = salt['pillar.get']('aws:elb:cnames', None) %}
+{% set cnames = salt['pillar.get']('aws:elb:cnames', []) %}
 {% set elb_name = salt['pillar.get']('aws:elb:name', 'default_elb') %}
 {% set health_check = salt['pillar.get']('aws:elb:health_check', {'target': 'HTTP:80/'}) %}
 {% set listeners = salt['pillar.get']('aws:elb:listeners', []) %}
-{% set security_groups = salt['pillar.get']('aws:elb:security_groups', None) %}
-{% set subnets = salt['pillar.get']('aws:elb:subnets', None) %}
+{% set security_groups = salt['pillar.get']('aws:elb:security_groups', []) %}
+{% set subnets = salt['pillar.get']('aws:elb:subnets', []) %}
 
 provision_elb:
   boto_elb.present:
