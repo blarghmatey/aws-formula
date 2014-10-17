@@ -1,7 +1,7 @@
 {% from "aws/map.jinja" import aws with context %}
 
 {% set attributes = salt['pillar.get']('aws:elb:attributes', {}) %}
-{% set availability_zones = salt['pillar.get']('aws:elb:availability_zones', ['us-east-1a']) %}
+{% set availability_zones = salt['pillar.get']('aws:elb:availability_zones', None) %}
 {% set aws_key = salt['pillar.get']('aws:key', None) %}
 {% set aws_region = salt['pillar.get']('aws:region', 'us-east-1') %}
 {% set aws_secret_key = salt['pillar.get']('aws:secret_key', None) %}
@@ -16,9 +16,11 @@ provision_elb:
   boto_elb.present:
     - name: {{ elb_name }}
     - region: {{ aws_region }}
-    - availability_zones: {{ availability_zones }}
     - keyid: {{ aws_key }}
     - key: {{ aws_secret_key }}
+    {% if availability_zones %}
+    - availability_zones: {{ availability_zones }}
+    {% endif %}
     {% if listeners %}
     - listeners:
         {% for listener in listeners %}
