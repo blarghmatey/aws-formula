@@ -26,6 +26,8 @@ create_autoscale_{{ group_name }}:
   boto_asg.present:
     - name: {{ group_name }}
     - launch_config_name: {{ launch_config_name }}
+    - keyid: {{ aws_key }}
+    - key: {{ aws_secret_key }}
     - availability_zones:
         {% for zone in availability_zones %}
         - {{ zone }}
