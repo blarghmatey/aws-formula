@@ -12,8 +12,8 @@
 {% set group_name = group.name %}
 {% set health_check_type = group.get('health_check_type', 'ELB') %}
 {% set health_check_period = group.get('health_check_period', 300) %}
-{% set launch_config_name = group.launch_config.name %}
-{% set launch_config = group.get('launch_config', {}) %}
+{% set launch_config_name = group.launch_config_name %}
+{% set launch_config = group.get('launch_config', []) %}
 {% set load_balancers = group.get('load_balancers', []) %}
 {% set max_size = group.max_size %}
 {% set min_size = group.min_size %}
