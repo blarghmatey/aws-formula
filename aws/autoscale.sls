@@ -62,8 +62,7 @@ create_autoscale_{{ group_name }}:
     {% if scaling_policies %}
     - scaling_policies:
         {% for policy in scaling_policies %}
-        ----------
-        {{ policy }}
+        - {{ policy }}
         {% endfor %}
     {% endif %}
     {% if suspended_processes %}
