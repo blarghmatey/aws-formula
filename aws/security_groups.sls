@@ -1,7 +1,7 @@
 {% set security_groups = salt['pillar.get']('aws:security_groups', []) %}
 
 {% for group in security_groups %}
-{{ group.name }}
+{{ group.name }}:
   boto_secgroup.present:
     - name: {{ group.name }}
     - description: {{ group.description }}
