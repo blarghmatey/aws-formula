@@ -20,7 +20,7 @@
 {% set region = group.get('region', 'us-east-1') %}
 {% set scaling_policies = group.get('scaling_policies', []) %}
 {% set suspended_processes = group.get('suspended_processes', []) %}
-{% set termination_policies = group.get('termination_policies', 'ClosestToNextInstanceHour') %}
+{% set termination_policies = group.get('termination_policies', ['ClosestToNextInstanceHour']) %}
 {% set vpc_zone_identifiers = group.get('vpc_zone_identifiers', []) %}
 create_autoscale_{{ group_name }}:
   boto_asg.present:
