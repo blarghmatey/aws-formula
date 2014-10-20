@@ -6,6 +6,7 @@
 
 {% for alarm in alarms %}
 
+{% if alarm %}
 {% set name = alarm.name %}
 {% set region = alarm.get('region', 'us-east-1') %}
 {% set attributes = alarm.get('attributes', {}) %}
@@ -18,4 +19,5 @@ create_cloudwatch_alarm_{{ name }}:
     - keyid: {{ aws_key }}
     - attributes: {{ attributes }}
 
+{% endif %}
 {% endfor %}
